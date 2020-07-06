@@ -1,0 +1,11 @@
+{
+  "name": "2020618taobao",
+  "version": "1.0.0",
+  "description": "淘宝618前端技术研究",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "cai jieying",
+  "license": "ISC"
+}

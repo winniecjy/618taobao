@@ -12,7 +12,7 @@
  * author: cai jieying
  */
 const fs = require("fs")
-const TIMES = 1000 // 尝试次数
+const TIMES = 20 // 尝试次数
 const ALPHA = 0.1 // 学习率
 const GAMMA = 0.9 // 衰减率
 var EPSILON = 0.9 // greedy贪婪程度
@@ -75,7 +75,7 @@ class QLearning {
         this.qTable[oldStateName][action] += ALPHA*(qTarget - qPredict)
         actionChain.push(action)
 
-      console.log("level: ", this.state)
+      // console.log("level: ", this.state)
       }
       // console.log("step: ", step)
       let data = {
@@ -84,7 +84,11 @@ class QLearning {
         actionChain,
         state: this.state
       }
-      fs.writeFileSync(`${__dirname}/learningData/qTable${cnt}.txt`, JSON.stringify(data))
+      console.log(cnt)
+      if (EPSILON > .95) {
+        fs.writeFileSync(`${__dirname}/learningData/qTable${cnt}.txt`, JSON.stringify(data))
+      }
+      
     }
   }
 
@@ -180,3 +184,4 @@ class QLearning {
 
 var qLearning = new QLearning()
 qLearning.start()
+qLearning = null
